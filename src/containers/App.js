@@ -20,8 +20,19 @@ export default class JiggyNativeAttempt extends Component {
     }
 
   handleTermChange(term) {
-    console.log(term);
+    var url = `https://api.giphy.com/v1/gifs/search?q=${term}&api_key=2cf60892033b43d4a1e577e721b99d41`;
+    var value = []
+    fetch(url)
+    .then((response) => response.json())
+    .then((responseJson) => {
+     value = responseJson.data;
+     console.log(value)
+    })
+    .catch((error) => {
+      console.error(error);
+    });
   }
+
 
   render() {
     return (
