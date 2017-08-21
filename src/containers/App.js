@@ -4,30 +4,43 @@ import {
   Image,
   StyleSheet,
   Text,
-  View,
+  View
 } from 'react-native';
 import SearchyBar from '../components/SearchBar';
-
-var MOCKED_GIF_DATA = [
-  {gifurl: "https://media.giphy.com/media/WuGSL4LFUMQU/giphy.gif"},
-  {gifurl: "https://media.giphy.com/media/l4Ki2UBDUhRjvmC7m/giphy.gif"},
-  {gifurl: "https://media.giphy.com/media/ului10cR0BK8w/giphy.gif"}
-];
+import GifList from '../components/GifList';
 
 export default class JiggyNativeAttempt extends Component {
+
+  constructor() {
+        super();
+
+        this.state = {
+            gifs: [
+                {
+                    id: 1,
+                    url: 'https://media.giphy.com/media/WuGSL4LFUMQU/giphy.gif'
+                },
+                {
+                    id: 2,
+                    url: 'https://media.giphy.com/media/l4Ki2UBDUhRjvmC7m/giphy.gif'
+                },
+                {
+                    id: 3,
+                    url: 'https://media.giphy.com/media/ului10cR0BK8w/giphy.gif'
+                }
+            ]
+        }
+    }
 
   handleTermChange(term) {
     console.log(term);
   }
 
   render() {
-    var gif = MOCKED_GIF_DATA[0];
     return (
       <View style={styles.container}>
       <SearchyBar onTermChange={this.handleTermChange}/>
-        <Image
-        source={{uri: gif.gifurl}}
-        style={styles.gifurl} />
+      <GifList gifs={this.state.gifs} />
       </View>
     );
   }
