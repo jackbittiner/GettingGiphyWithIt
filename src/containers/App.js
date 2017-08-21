@@ -6,6 +6,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import SearchyBar from '../components/SearchBar';
 
 var MOCKED_GIF_DATA = [
   {gifurl: "https://media.giphy.com/media/WuGSL4LFUMQU/giphy.gif"},
@@ -14,10 +15,16 @@ var MOCKED_GIF_DATA = [
 ];
 
 export default class JiggyNativeAttempt extends Component {
+
+  handleTermChange(term) {
+    console.log(term);
+  }
+
   render() {
     var gif = MOCKED_GIF_DATA[0];
     return (
       <View style={styles.container}>
+      <SearchyBar onTermChange={this.handleTermChange}/>
         <Image
         source={{uri: gif.gifurl}}
         style={styles.gifurl} />
