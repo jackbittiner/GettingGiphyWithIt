@@ -15,20 +15,7 @@ export default class JiggyNativeAttempt extends Component {
         super();
 
         this.state = {
-            gifs: [
-                {
-                    id: 1,
-                    url: 'https://media.giphy.com/media/WuGSL4LFUMQU/giphy.gif'
-                },
-                {
-                    id: 2,
-                    url: 'https://media.giphy.com/media/l4Ki2UBDUhRjvmC7m/giphy.gif'
-                },
-                {
-                    id: 3,
-                    url: 'https://media.giphy.com/media/ului10cR0BK8w/giphy.gif'
-                }
-            ]
+            gifs: []
         }
     }
 

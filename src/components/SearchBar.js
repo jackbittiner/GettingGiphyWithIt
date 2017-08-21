@@ -1,5 +1,5 @@
 import React from 'react';
-import { SearchBar } from 'react-native-elements'
+import { TextInput } from 'react-native';
 
 class SearchyBar extends React.Component {
   constructor() {
@@ -14,8 +14,9 @@ class SearchyBar extends React.Component {
 
     render() {
         return (
-          <SearchBar
-            onChange={event => this.onInputChange(event.target.value)}
+          <TextInput
+          style={{height: 40}}
+            onChangeText={(text) => this.onInputChange(text)}
             placeholder='Type Here Plz' />
         );
     }
