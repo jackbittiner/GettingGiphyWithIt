@@ -4,7 +4,8 @@ import {
   Image,
   StyleSheet,
   Text,
-  View
+  View,
+  ScrollView
 } from 'react-native';
 import SearchyBar from '../components/SearchBar';
 import GifList from '../components/GifList';
@@ -40,7 +41,9 @@ export default class JiggyNativeAttempt extends Component {
     return (
       <View style={styles.container}>
       <SearchyBar onTermChange={this.handleTermChange}/>
+      <ScrollView>
       <GifList gifs={this.state.gifs} />
+      </ScrollView>
       </View>
     );
   }

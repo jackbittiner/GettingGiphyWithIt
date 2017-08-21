@@ -6,7 +6,7 @@ import {
 const GifItem = (image) => {
   return (
       <Image source={{uri: image.gif.images.downsized.url}}
-      style={{width: 100, height: 100}} />
+      style={{width: 150, height: 150}} />
   )
 };
 
