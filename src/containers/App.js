@@ -18,7 +18,9 @@ class JiggyNativeAttempt extends Component {
      return (
        <View style={styles.container}>
          <SearchyBar onTermChange={this.props.actions.requestGifs}/>
+         <ScrollView>
          <GifList gifs={ this.props.gifs } />
+         </ScrollView>
        </View>
      );
    }
