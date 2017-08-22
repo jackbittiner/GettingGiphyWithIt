@@ -9,47 +9,34 @@ import {
 } from 'react-native';
 import SearchyBar from '../components/SearchBar';
 import GifList from '../components/GifList';
+import { connect } from 'react-redux';
+import * as Actions from '../actions';
+import { bindActionCreators } from 'redux';
 
-export default class JiggyNativeAttempt extends Component {
-
-  constructor() {
-        super();
-
-        this.state = {
-            gifs: []
-        };
-
-        this.handleTermChange = this.handleTermChange.bind(this);
-    }
-
-  handleTermChange = (term) => {
-    var url = `https://api.giphy.com/v1/gifs/search?q=${term.replace(/\s/g, '+')}&api_key=2cf60892033b43d4a1e577e721b99d41`;
-    var value = []
-    fetch(url)
-    .then((response) => response.json())
-    .then((responseJson) => {
-     value = responseJson.data;
-     this.setState({ gifs: value });
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-  };
-
-
+class JiggyNativeAttempt extends Component {
   render() {
-    return (
-      <View style={styles.container}>
-      <SearchyBar onTermChange={this.handleTermChange}/>
-      <ScrollView>
-      <GifList gifs={this.state.gifs} />
-      </ScrollView>
-      </View>
-    );
-  }
+     return (
+       <View style={styles.container}>
+         <SearchyBar onTermChange={this.props.actions.requestGifs}/>
+         <GifList gifs={ this.props.gifs } />
+       </View>
+     );
+   }
+ }
+
+ function mapStateToProps(state) {
+   return {
+     gifs: state.gifs.data
+   };
+ }
+
+ function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(Actions, dispatch)
+  };
 }
 
-var styles = StyleSheet.create({
+ var styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -61,3 +48,5 @@ var styles = StyleSheet.create({
     height: 81,
   },
 });
+
+ export default connect(mapStateToProps, mapDispatchToProps)(JiggyNativeAttempt);

@@ -2,13 +2,8 @@ import React from 'react';
 import { TextInput } from 'react-native';
 
 class SearchyBar extends React.Component {
-  constructor() {
-          super();
-          this.state = { term: '' }
-      }
 
       onInputChange(term) {
-          this.setState({term});
           this.props.onTermChange(term);
       }
 
