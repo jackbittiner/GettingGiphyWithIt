@@ -44,6 +44,7 @@ class JiggyNativeAttempt extends Component {
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+    top: 30
   },
   gifurl: {
     width: 53,
